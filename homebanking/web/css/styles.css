@@ -6,6 +6,14 @@ body {
     background-color: #2a333d;
 }
 
+#loginPnl {
+    width: 200px;
+    height: 201px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
 .avatar {
     display: inline-block;
 

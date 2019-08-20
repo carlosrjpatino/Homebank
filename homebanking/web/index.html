@@ -11,12 +11,15 @@
         <header class="header">
             <img class="logo" src="img/logo.png"/>
             <div class="align-left">
-                <span id="nombre">Bienvenido/a</span>
-                <img class="avatar" src="img/avatar.svg"/>
+                
             </div>
         </header>
         <main >
             <div id="cuentaPnl" class="white-container">
+                <div>
+                    <span id="nombre">Bienvenido/a</span>
+                <img class="avatar" src="img/avatar.svg"/>
+                </div>
                 <nav class="menu-container">
                     <h1 class="tu-cuenta">Tu cuenta</h1>
                     <button class="links" onclick="extraerDinero()">Extraer dinero</button>
@@ -38,7 +41,9 @@
                 <input type="text" />
                 <p>CLAVE</p>
                 <input type="password" />
-                <button>Login</button>
+                <div>
+                    <button>Login</button>
+                </div>
             </div>
         </main>
         <script src="js/programa.js" defer=""></script>
