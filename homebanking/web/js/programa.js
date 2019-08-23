@@ -13,27 +13,35 @@ class Login {
     static entrar(){
         let user = document.querySelector("#user").value;
         let pass = document.querySelector("#pass").value;
-        let datoCuenta = Login.baseDeDatos();
-        console.log("Base de datos: " + datoCuenta.user);
-        
+        let datoCuenta = Login.baseDeDatos();        
         if (datoCuenta.user === user & datoCuenta.pass === pass) {
-            console.log("ENTRASTE");
+            //Muestra el panel de cuenta privada.
             Login.showPnlCuenta();
+            //Oculta el panel de login publico.
             Login.hidePnlLogin();
+            document.querySelector("#mensajePnl").innerHTML = "";
         } else {
-            console.log("A la calle!");
+            //Muestra mensaje de error
+            document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
             
         }
     }
     
     static salir() {
-        
+        //Oculto el panel de la cuenta privada
+        Login.hidePnlCuenta();
+        //Muestro el login publico.
+        Login.showPnlLogin();
     }
     
     static init() {
+        //Muestra panel de login publico
         Login.showPnlLogin();
+        //Oculta panel de cuenta privada
         Login.hidePnlCuenta();
-        document.querySelector("#loginBtn").setAttribute("onclick","Login.entrar();");
+        //A los botones de Login y Logout le asigna metodos de la Clase.
+        document.querySelector("#loginBtn").setAttribute("onclick","Login.entrar();");       
+        document.querySelector("#logoutBtn").setAttribute("onclick","Login.salir();");
     }
     
     static showPnlCuenta() {
@@ -54,5 +62,5 @@ class Login {
     }
 }
 
-
+//Hace arrancar el programa.
 Login.init();
