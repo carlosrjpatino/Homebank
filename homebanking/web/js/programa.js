@@ -6,7 +6,9 @@ class Login {
         let cuentas = {
             nombre : "Pedro Lopez",
             user : "pedro",
-            pass : "123"
+            pass : "123",
+            saldo : 55000,
+            limite: 5000
         };
         return cuentas;
     }
@@ -21,7 +23,11 @@ class Login {
             //Oculta el panel de login publico.
             Login.hidePnlLogin();
             document.querySelector("#mensajePnl").innerHTML = "";
+            
             document.querySelector("#nombreUser").innerHTML = datoCuenta.nombre;
+            document.querySelector("#saldo-cuenta").innerHTML = "$" + datoCuenta.saldo;
+            document.querySelector("#limiteMonto").innerHTML = "$" + datoCuenta.limite;
+            
         } else {
             //Muestra mensaje de error
             document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
@@ -36,6 +42,17 @@ class Login {
         Login.showPnlLogin();
     }
     
+    static extraerTpl(){
+        document.querySelector("#masterTpl").innerHTML = document.querySelector("#extraerTpl").innerHTML;
+    }
+    
+    static extraerCalculo(){
+        let datoCuenta = Login.baseDeDatos();
+        console.log("saldo antes de extracion: " + datoCuenta.saldo);
+        datoCuenta.saldo = datoCuenta.saldo - document.querySelector("#extraerInput").value;
+        console.log("saldo despues de extracion: " + datoCuenta.saldo);
+    }
+    
     static init() {
         //Muestra panel de login publico
         Login.showPnlLogin();
@@ -44,6 +61,12 @@ class Login {
         //A los botones de Login y Logout le asigna metodos de la Clase.
         document.querySelector("#loginBtn").setAttribute("onclick","Login.entrar();");       
         document.querySelector("#logoutBtn").setAttribute("onclick","Login.salir();");
+        
+        
+        document.querySelector("#extraerOpt").setAttribute("onclick","Login.extraerTpl();");
+        document.querySelector("#extraerBtn").setAttribute("onclick","Login.extraerCalculo();");
+        
+        
     }
     
     static showPnlCuenta() {

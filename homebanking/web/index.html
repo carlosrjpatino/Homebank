@@ -24,18 +24,18 @@
                     <img class="avatar" src="img/avatar.svg"/>
                     <span id="nombre">Bienvenido/a <span id="nombreUser"></span> </span>
                     <h1 class="tu-cuenta">Tu cuenta</h1>
-                    <button class="links" onclick="extraerDinero()">Extraer dinero</button>
+                    <button class="links" id="extraerOpt">Extraer dinero</button>
                     <button class="links" onclick="depositarDinero()">Depositar dinero</button>
                     <button class="links" onclick="pagarServicio()">Pagar servicios</button>
                     <button class="links" onclick="transferirDinero()">Transferir dinero</button>
                     <button class="links" onclick="cambiarLimiteDeExtraccion()">Cambiar límite de extracción</button>
                     <button class="links" id="logoutBtn">Logout</button>
                 </nav>
-                <section class="green-container">
+                <section class="green-container" id="masterTpl">
                     <article class="cuenta-info">
                         <p>Saldo en tu cuenta</p>
                         <h3 id="saldo-cuenta">$</h3>
-                        <p id="limite-extraccion">Tu límite de extracción es: </p>
+                        <p id="limite-extraccion">Tu límite de extracción es: <span id="limiteMonto"></span></p>
                     </article>
                 </section>
                 
@@ -51,6 +51,13 @@
                 <div id="mensajePnl"></div>
             </div>
         </main>
+        
+        <!-- ZONA DE TEMPLATES -->
+        <div id="extraerTpl">
+            <h2>Extraer dinero</h2>
+            <input type="number" id="extraerInput" />
+            <button id="extraerBtn">Aceptar</button>
+        </div>
         <script src="js/programa.js" defer=""></script>
     </body>
 </html>
