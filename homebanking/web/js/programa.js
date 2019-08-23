@@ -4,6 +4,7 @@ class Login {
         // Esta seria nuestra base de datos.
         // En esta primer etapa lo manejamos desde el cliente, luego ira en el servidor con SQL.
         let cuentas = {
+            nombre : "Pedro Lopez",
             user : "pedro",
             pass : "123"
         };
@@ -20,6 +21,7 @@ class Login {
             //Oculta el panel de login publico.
             Login.hidePnlLogin();
             document.querySelector("#mensajePnl").innerHTML = "";
+            document.querySelector("#nombreUser").innerHTML = datoCuenta.nombre;
         } else {
             //Muestra mensaje de error
             document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
