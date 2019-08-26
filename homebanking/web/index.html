@@ -24,19 +24,20 @@
                     <img class="avatar" src="img/avatar.svg"/>
                     <span id="nombre">Bienvenido/a <span id="nombreUser"></span> </span>
                     <h1 class="tu-cuenta">Tu cuenta</h1>
+                    <button class="links" id="consultarOpt">Consultar saldo</button>
                     <button class="links" id="extraerOpt">Extraer dinero</button>
                     <button class="links" onclick="depositarDinero()">Depositar dinero</button>
                     <button class="links" onclick="pagarServicio()">Pagar servicios</button>
                     <button class="links" onclick="transferirDinero()">Transferir dinero</button>
-                    <button class="links" onclick="cambiarLimiteDeExtraccion()">Cambiar límite de extracción</button>
+                    <button class="links" onclick="cambiarLimiteDeExtraccion()">Límite de extracción</button>
                     <button class="links" id="logoutBtn">Logout</button>
                 </nav>
                 <section class="green-container" id="masterTpl">
-                    <article class="cuenta-info">
+                    <!-- article class="cuenta-info">
                         <p>Saldo en tu cuenta</p>
                         <h3 id="saldo-cuenta">$</h3>
                         <p id="limite-extraccion">Tu límite de extracción es: <span id="limiteMonto"></span></p>
-                    </article>
+                    </article -->
                 </section>
                 
             </div>
@@ -58,6 +59,15 @@
             <input type="number" id="extraerInput" />
             <button id="extraerBtn">Aceptar</button>
         </div>
+        
+        
+        <article id="consultarTpl" class="ocultarTpl">
+            <p>Saldo en tu cuenta</p>
+            <h3 id="saldo-cuenta">$</h3>
+            <p id="limite-extraccion">Tu límite de extracción es: <span id="limiteMonto"></span></p>
+        </article>
+        
+        
         <script src="js/programa.js" defer=""></script>
     </body>
 </html>

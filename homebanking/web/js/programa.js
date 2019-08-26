@@ -10,6 +10,9 @@ class Login {
             saldo : 55000,
             limite: 5000
         };
+        
+        //Usamos el LocalStorage como base de datos
+        localStorage.setItem("miBaseDeDatos", JSON.stringify(cuentas));
         return cuentas;
     }
     
@@ -22,12 +25,7 @@ class Login {
             Login.showPnlCuenta();
             //Oculta el panel de login publico.
             Login.hidePnlLogin();
-            document.querySelector("#mensajePnl").innerHTML = "";
-            
-            document.querySelector("#nombreUser").innerHTML = datoCuenta.nombre;
-            document.querySelector("#saldo-cuenta").innerHTML = "$" + datoCuenta.saldo;
-            document.querySelector("#limiteMonto").innerHTML = "$" + datoCuenta.limite;
-            
+            Login.consultarTpl();                        
         } else {
             //Muestra mensaje de error
             document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
@@ -42,15 +40,31 @@ class Login {
         Login.showPnlLogin();
     }
     
+    static consultarTpl() {
+        document.querySelector("#masterTpl").innerHTML = document.querySelector("#consultarTpl").innerHTML;
+        document.querySelector("#mensajePnl").innerHTML = "";
+        //let datoCuenta = Login.baseDeDatos();            
+        let misDatos = JSON.parse( localStorage.getItem("miBaseDeDatos") );
+        document.querySelector("#nombreUser").innerHTML = misDatos.nombre;
+        document.querySelector("#saldo-cuenta").innerHTML = "$" + misDatos.saldo;
+        document.querySelector("#limiteMonto").innerHTML = "$" + misDatos.limite;
+    } 
+    
     static extraerTpl(){
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#extraerTpl").innerHTML;
     }
     
     static extraerCalculo(){
-        let datoCuenta = Login.baseDeDatos();
-        console.log("saldo antes de extracion: " + datoCuenta.saldo);
-        datoCuenta.saldo = datoCuenta.saldo - document.querySelector("#extraerInput").value;
-        console.log("saldo despues de extracion: " + datoCuenta.saldo);
+        //let datoCuenta = Login.baseDeDatos();
+        let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+        
+        console.log("saldo antes de extracion: " + misDatos.saldo);
+        
+        misDatos.saldo = misDatos.saldo - document.querySelector("#extraerInput").value;
+        
+        localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+        
+        console.log("saldo despues de extracion: " + misDatos.saldo);
     }
     
     static init() {
@@ -65,6 +79,8 @@ class Login {
         
         document.querySelector("#extraerOpt").setAttribute("onclick","Login.extraerTpl();");
         document.querySelector("#extraerBtn").setAttribute("onclick","Login.extraerCalculo();");
+        document.querySelector("#consultarOpt").setAttribute("onclick","Login.consultarTpl();");
+        
         
         
     }
