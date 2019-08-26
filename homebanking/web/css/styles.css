@@ -14,6 +14,10 @@ body {
     background-color: white;
 }
 
+.ocultarTpl {
+    display: none;
+}
+
 .avatar {
     display: inline-block;
 
