@@ -26,10 +26,8 @@
                     <h1 class="tu-cuenta">Tu cuenta</h1>
                     <button class="links" id="consultarOpt">Consultar saldo</button>
                     <button class="links" id="extraerOpt">Extraer dinero</button>
-                    <button class="links" id="depositarOpt">Depositar dinero</button>
-                    <button class="links" onclick="pagarServicio()">Pagar servicios</button>
-                    <button class="links" onclick="transferirDinero()">Transferir dinero</button>
-                    <button class="links" onclick="cambiarLimiteDeExtraccion()">Límite de extracción</button>
+                    <button class="links" id="depositarOpt">Depositar dinero</button>                   
+                    <button class="links" id="limiteOpt">Límite de extracción</button>
                     <button class="links" id="logoutBtn">Logout</button>
                 </nav>
                 <section class="green-container" id="masterTpl">
@@ -74,6 +72,13 @@
             <input type="number" id="depositarInput" min="1"/>
             <button id="depositarBtn">Aceptar</button>
             <div id="pnlMensajeDepositar"></div>
+        </div>
+        
+        <div id="limiteTpl" class="ocultarTpl">
+            <h2>Cambiar límite de extracción</h2>
+            <input type="number" id="limiteInput" min="1"/>
+            <button id="limiteBtn">Aceptar</button>
+            <div id="pnlMensajeLimite"></div>
         </div>
         
         

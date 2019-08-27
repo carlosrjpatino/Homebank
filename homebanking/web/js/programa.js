@@ -81,7 +81,7 @@ class Login {
             let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
 
             if (document.querySelector("#extraerInput").value >= misDatos.limite) {
-               document.querySelector("#pnlMensajeExtraer").innerHTML = "Superó el límite de extracción.";
+                document.querySelector("#pnlMensajeExtraer").innerHTML = "Superó el límite de extracción.";
             } else {
                 console.log("saldo antes de extracion: " + misDatos.saldo);
 
@@ -95,6 +95,32 @@ class Login {
             }
 
         }
+
+
+    }
+
+    static limiteTpl() {
+        document.querySelector("#masterTpl").innerHTML = document.querySelector("#limiteTpl").innerHTML;
+    }
+
+    static limiteCalculo() {
+        console.log("Estas con actualizar el limite!");
+        let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+        if (document.querySelector("#limiteInput").value <= 0) {
+            document.querySelector("#pnlMensajeLimite").innerHTML = "No se pudo modificar el limite. El monto debe ser mayor a $1.";
+        } else {
+            if (document.querySelector("#limiteInput").value < 8000) {
+                console.log("Si puede actualizar el limite");
+                misDatos.limite = document.querySelector("#limiteInput").value;
+                localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+                document.querySelector("#pnlMensajeLimite").innerHTML = "Se actualizó el límite a $" + misDatos.limite;
+            } else {
+                console.log("El limite es muy grande");
+            }
+
+        }
+
+
 
 
     }
@@ -114,6 +140,9 @@ class Login {
         document.querySelector("#consultarOpt").setAttribute("onclick", "Login.consultarTpl();");
         document.querySelector("#depositarOpt").setAttribute("onclick", "Login.depositarTpl()");
         document.querySelector("#depositarBtn").setAttribute("onclick", "Login.depositarCalculo();");
+
+        document.querySelector("#limiteOpt").setAttribute("onclick", "Login.limiteTpl()");
+        document.querySelector("#limiteBtn").setAttribute("onclick", "Login.limiteCalculo();");
 
 
 
