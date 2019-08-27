@@ -48,10 +48,25 @@ class Login {
         document.querySelector("#nombreUser").innerHTML = misDatos.nombre;
         document.querySelector("#saldo-cuenta").innerHTML = "$" + misDatos.saldo;
         document.querySelector("#limiteMonto").innerHTML = "$" + misDatos.limite;
-    } 
+    }
 
     static extraerTpl() {
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#extraerTpl").innerHTML;
+    }
+
+    static depositarTpl() {
+        document.querySelector("#masterTpl").innerHTML = document.querySelector("#depositarTpl").innerHTML;
+    }
+
+    static depositarCalculo() {
+        if (document.querySelector("#depositarInput").value <= 0) {
+            document.querySelector("#pnlMensajeDepositar").innerHTML = "No se puede depositar menos de $1.";
+        } else {
+            let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+            misDatos.saldo = parseInt(document.querySelector("#depositarInput").value) + misDatos.saldo;
+            localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+            document.querySelector("#pnlMensajeDepositar").innerHTML = "Okay, deposito de $" + document.querySelector("#depositarInput").value;
+        }
     }
 
     static extraerCalculo() {
@@ -59,20 +74,26 @@ class Login {
 
         if (document.querySelector("#extraerInput").value <= 0) {
             console.log("numero negativo o cero");
-            document.querySelector("#pnlMensajeExtraer").innerHTML = "No se pudo extraer dinero. El monto debe ser mayor a 1.";
+            document.querySelector("#pnlMensajeExtraer").innerHTML = "No se pudo extraer dinero. El monto debe ser mayor a $1.";
         } else {
+
             console.log("Si puede transferir");
             let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
 
-            console.log("saldo antes de extracion: " + misDatos.saldo);
+            if (document.querySelector("#extraerInput").value >= misDatos.limite) {
+               document.querySelector("#pnlMensajeExtraer").innerHTML = "Superó el límite de extracción.";
+            } else {
+                console.log("saldo antes de extracion: " + misDatos.saldo);
 
-            misDatos.saldo = misDatos.saldo - document.querySelector("#extraerInput").value;
+                misDatos.saldo = misDatos.saldo - document.querySelector("#extraerInput").value;
 
-            localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+                localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
 
-            console.log("saldo despues de extracion: " + misDatos.saldo);
-            
-            document.querySelector("#pnlMensajeExtraer").innerHTML = "Extracción realizado por " + document.querySelector("#extraerInput").value  ;
+                console.log("saldo despues de extracion: " + misDatos.saldo);
+
+                document.querySelector("#pnlMensajeExtraer").innerHTML = "Extracción realizado por $" + document.querySelector("#extraerInput").value;
+            }
+
         }
 
 
@@ -91,6 +112,8 @@ class Login {
         document.querySelector("#extraerOpt").setAttribute("onclick", "Login.extraerTpl();");
         document.querySelector("#extraerBtn").setAttribute("onclick", "Login.extraerCalculo();");
         document.querySelector("#consultarOpt").setAttribute("onclick", "Login.consultarTpl();");
+        document.querySelector("#depositarOpt").setAttribute("onclick", "Login.depositarTpl()");
+        document.querySelector("#depositarBtn").setAttribute("onclick", "Login.depositarCalculo();");
 
 
 

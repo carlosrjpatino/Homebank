@@ -26,7 +26,7 @@
                     <h1 class="tu-cuenta">Tu cuenta</h1>
                     <button class="links" id="consultarOpt">Consultar saldo</button>
                     <button class="links" id="extraerOpt">Extraer dinero</button>
-                    <button class="links" onclick="depositarDinero()">Depositar dinero</button>
+                    <button class="links" id="depositarOpt">Depositar dinero</button>
                     <button class="links" onclick="pagarServicio()">Pagar servicios</button>
                     <button class="links" onclick="transferirDinero()">Transferir dinero</button>
                     <button class="links" onclick="cambiarLimiteDeExtraccion()">Límite de extracción</button>
@@ -67,6 +67,14 @@
             <h3 id="saldo-cuenta">$</h3>
             <p id="limite-extraccion">Tu límite de extracción es: <span id="limiteMonto"></span></p>
         </article>
+        
+        
+        <div id="depositarTpl" class="ocultarTpl">
+            <h2>Depositar dinero</h2>
+            <input type="number" id="depositarInput" min="1"/>
+            <button id="depositarBtn">Aceptar</button>
+            <div id="pnlMensajeDepositar"></div>
+        </div>
         
         
         <script src="js/programa.js" defer=""></script>
