@@ -1,31 +1,15 @@
 class Login {
 
-    static baseDeDatos() {
-        // Esta seria nuestra base de datos.
-        // En esta primer etapa lo manejamos desde el cliente, luego ira en el servidor con SQL.
-        let cuentas = {
-            nombre: "Pedro Lopez",
-            user: "pedro",
-            pass: "123",
-            saldo: 55000,
-            limite: 5000
-        };
-
-        //Usamos el LocalStorage como base de datos
-        localStorage.setItem("miBaseDeDatos", JSON.stringify(cuentas));
-        return cuentas;
-    }
-
     static entrar() {
         let user = document.querySelector("#user").value;
         let pass = document.querySelector("#pass").value;
-        let datoCuenta = Login.baseDeDatos();
+        let datoCuenta = BaseDeDatos.datos();
         if (datoCuenta.user === user & datoCuenta.pass === pass) {
             //Muestra el panel de cuenta privada.
             Login.showPnlCuenta();
             //Oculta el panel de login publico.
             Login.hidePnlLogin();
-            Login.consultarTpl();
+            Cuenta.consultarTpl();
         } else {
             //Muestra mensaje de error
             document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
@@ -40,6 +24,43 @@ class Login {
         Login.showPnlLogin();
     }
 
+    static init() {
+        //Muestra panel de login publico
+        Login.showPnlLogin();
+        //Oculta panel de cuenta privada
+        Login.hidePnlCuenta();
+        //A los botones de Login y Logout le asigna metodos de la Clase.
+        document.querySelector("#loginBtn").setAttribute("onclick", "Login.entrar();");
+        document.querySelector("#logoutBtn").setAttribute("onclick", "Login.salir();");
+
+        document.querySelector("#extraerOpt").setAttribute("onclick", "Cuenta.extraerTpl();");
+        document.querySelector("#extraerBtn").setAttribute("onclick", "Cuenta.extraerCalculo();");
+        document.querySelector("#consultarOpt").setAttribute("onclick", "Cuenta.consultarTpl();");
+        document.querySelector("#depositarOpt").setAttribute("onclick", "Cuenta.depositarTpl()");
+        document.querySelector("#depositarBtn").setAttribute("onclick", "Cuenta.depositarCalculo();");
+        document.querySelector("#limiteOpt").setAttribute("onclick", "Cuenta.limiteTpl()");
+        document.querySelector("#limiteBtn").setAttribute("onclick", "Cuenta.limiteCalculo();");
+    }
+
+    static showPnlCuenta() {
+        document.querySelector("#cuentaPnl").style.display = "flex";
+    }
+
+    static showPnlLogin() {
+        document.querySelector("#loginPnl").style.display = "block";
+    }
+
+    static hidePnlCuenta() {
+        document.querySelector("#cuentaPnl").style.display = "none";
+    }
+
+    static hidePnlLogin() {
+        document.querySelector("#loginPnl").style.display = "none";
+
+    }
+}
+
+class Cuenta {
     static consultarTpl() {
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#consultarTpl").innerHTML;
         document.querySelector("#mensajePnl").innerHTML = "";
@@ -125,45 +146,23 @@ class Login {
 
 
     }
+}
 
-    static init() {
-        //Muestra panel de login publico
-        Login.showPnlLogin();
-        //Oculta panel de cuenta privada
-        Login.hidePnlCuenta();
-        //A los botones de Login y Logout le asigna metodos de la Clase.
-        document.querySelector("#loginBtn").setAttribute("onclick", "Login.entrar();");
-        document.querySelector("#logoutBtn").setAttribute("onclick", "Login.salir();");
+class BaseDeDatos {
+    static datos() {
+        // Esta seria nuestra base de datos.
+        // En esta primer etapa lo manejamos desde el cliente, luego ira en el servidor con SQL.
+        let cuentas = {
+            nombre: "Pedro Lopez",
+            user: "pedro",
+            pass: "123",
+            saldo: 55000,
+            limite: 5000
+        };
 
-
-        document.querySelector("#extraerOpt").setAttribute("onclick", "Login.extraerTpl();");
-        document.querySelector("#extraerBtn").setAttribute("onclick", "Login.extraerCalculo();");
-        document.querySelector("#consultarOpt").setAttribute("onclick", "Login.consultarTpl();");
-        document.querySelector("#depositarOpt").setAttribute("onclick", "Login.depositarTpl()");
-        document.querySelector("#depositarBtn").setAttribute("onclick", "Login.depositarCalculo();");
-
-        document.querySelector("#limiteOpt").setAttribute("onclick", "Login.limiteTpl()");
-        document.querySelector("#limiteBtn").setAttribute("onclick", "Login.limiteCalculo();");
-
-
-
-    }
-
-    static showPnlCuenta() {
-        document.querySelector("#cuentaPnl").style.display = "flex";
-    }
-
-    static showPnlLogin() {
-        document.querySelector("#loginPnl").style.display = "block";
-    }
-
-    static hidePnlCuenta() {
-        document.querySelector("#cuentaPnl").style.display = "none";
-    }
-
-    static hidePnlLogin() {
-        document.querySelector("#loginPnl").style.display = "none";
-
+        //Usamos el LocalStorage como base de datos
+        localStorage.setItem("miBaseDeDatos", JSON.stringify(cuentas));
+        return cuentas;
     }
 }
 
