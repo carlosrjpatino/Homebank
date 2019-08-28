@@ -116,6 +116,7 @@ class Login {
                 document.querySelector("#pnlMensajeLimite").innerHTML = "Se actualizó el límite a $" + misDatos.limite;
             } else {
                 console.log("El limite es muy grande");
+                document.querySelector("#pnlMensajeLimite").innerHTML = "El limite es muy grande.";
             }
 
         }
