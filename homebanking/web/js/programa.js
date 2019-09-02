@@ -26,7 +26,9 @@ class Login {
                 Login.showPnlCuenta();
                 //Oculta el panel de login publico.
                 Login.hidePnlLogin();
+                localStorage.setItem("miCuenta", JSON.stringify(userBuscados));
                 Cuenta.consultarTpl();
+                
             } else {
                 //Muestra mensaje de error
             document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
@@ -83,7 +85,7 @@ class Cuenta {
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#consultarTpl").innerHTML;
         document.querySelector("#mensajePnl").innerHTML = "";
         //let datoCuenta = Login.baseDeDatos();            
-        let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+        let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
         document.querySelector("#nombreUser").innerHTML = misDatos.nombre;
         document.querySelector("#saldo-cuenta").innerHTML = "$" + misDatos.saldo;
         document.querySelector("#limiteMonto").innerHTML = "$" + misDatos.limite;
@@ -101,9 +103,9 @@ class Cuenta {
         if (document.querySelector("#depositarInput").value <= 0) {
             document.querySelector("#pnlMensajeDepositar").innerHTML = "No se puede depositar menos de $1.";
         } else {
-            let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+            let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
             misDatos.saldo = parseInt(document.querySelector("#depositarInput").value) + misDatos.saldo;
-            localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+            localStorage.setItem("miCuenta", JSON.stringify(misDatos));
             document.querySelector("#pnlMensajeDepositar").innerHTML = "Okay, deposito de $" + document.querySelector("#depositarInput").value;
         }
     }
@@ -117,7 +119,7 @@ class Cuenta {
         } else {
 
             console.log("Si puede transferir");
-            let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+            let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
 
             if (document.querySelector("#extraerInput").value >= misDatos.limite) {
                 document.querySelector("#pnlMensajeExtraer").innerHTML = "Superó el límite de extracción.";
@@ -126,7 +128,7 @@ class Cuenta {
 
                 misDatos.saldo = misDatos.saldo - document.querySelector("#extraerInput").value;
 
-                localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+                localStorage.setItem("miCuenta", JSON.stringify(misDatos));
 
                 console.log("saldo despues de extracion: " + misDatos.saldo);
 
@@ -144,14 +146,14 @@ class Cuenta {
 
     static limiteCalculo() {
         console.log("Estas con actualizar el limite!");
-        let misDatos = JSON.parse(localStorage.getItem("miBaseDeDatos"));
+        let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
         if (document.querySelector("#limiteInput").value <= 0) {
             document.querySelector("#pnlMensajeLimite").innerHTML = "No se pudo modificar el limite. El monto debe ser mayor a $1.";
         } else {
             if (document.querySelector("#limiteInput").value < 8000) {
                 console.log("Si puede actualizar el limite");
                 misDatos.limite = document.querySelector("#limiteInput").value;
-                localStorage.setItem("miBaseDeDatos", JSON.stringify(misDatos));
+                localStorage.setItem("miCuenta", JSON.stringify(misDatos));
                 document.querySelector("#pnlMensajeLimite").innerHTML = "Se actualizó el límite a $" + misDatos.limite;
             } else {
                 console.log("El limite es muy grande");
@@ -175,7 +177,7 @@ class BaseDeDatos {
             nombre: "Pedro Lopez",
             user: "lopez",
             pass: "321",
-            saldo: 55000,
+            saldo: 125000,
             limite: 5000
         },
         {
@@ -183,21 +185,21 @@ class BaseDeDatos {
             user: "luna",
             pass: "9090",
             saldo: 55000,
-            limite: 5000
+            limite: 6000
         },
         {
             nombre: "Romina",
             user: "gimenez",
             pass: "619",
-            saldo: 55000,
-            limite: 5000
+            saldo: 0,
+            limite: 3000
         },
         {
             nombre: "Gonzalo",
             user: "coronel",
             pass: "1825",
-            saldo: 55000,
-            limite: 5000
+            saldo: 1000,
+            limite: 1000
         }
     ];
 
