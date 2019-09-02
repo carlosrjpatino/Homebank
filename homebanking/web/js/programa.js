@@ -1,20 +1,38 @@
 class Login {
 
     static entrar() {
-        let user = document.querySelector("#user").value;
-        let pass = document.querySelector("#pass").value;
+        let userInput = document.querySelector("#user").value;
+        let passInput = document.querySelector("#pass").value;
         let datoCuenta = BaseDeDatos.datos();
-        if (datoCuenta.user === user & datoCuenta.pass === pass) {
-            //Muestra el panel de cuenta privada.
-            Login.showPnlCuenta();
-            //Oculta el panel de login publico.
-            Login.hidePnlLogin();
-            Cuenta.consultarTpl();
-        } else {
+        
+        //muestra por consola el listado completo de usuarios
+        datoCuenta.map( usuarioPorUsuario =>
+                 console.log(usuarioPorUsuario.nombre)                         
+                );
+        
+        //encuentra un usuario que se busque
+        let userBuscados = datoCuenta.find(usuarioPorUsuario => 
+                usuarioPorUsuario.user === userInput);
+        
+        if (userBuscados === undefined) {
+            //No encontro el usuario
             //Muestra mensaje de error
             document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
-
-        }
+        } else {
+            //Encontro el usuario
+            //Debemos comparar el password
+            if (userBuscados.pass === passInput) {
+                //Muestra el panel de cuenta privada.
+                Login.showPnlCuenta();
+                //Oculta el panel de login publico.
+                Login.hidePnlLogin();
+                Cuenta.consultarTpl();
+            } else {
+                //Muestra mensaje de error
+            document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
+            }            
+        }                
+        console.log("userBUscado:" + JSON.stringify(userBuscados));                              
     }
 
     static salir() {
@@ -152,13 +170,36 @@ class BaseDeDatos {
     static datos() {
         // Esta seria nuestra base de datos.
         // En esta primer etapa lo manejamos desde el cliente, luego ira en el servidor con SQL.
-        let cuentas = {
+        let cuentas = [
+            {
             nombre: "Pedro Lopez",
-            user: "pedro",
-            pass: "123",
+            user: "lopez",
+            pass: "321",
             saldo: 55000,
             limite: 5000
-        };
+        },
+        {
+            nombre: "Martin",
+            user: "luna",
+            pass: "9090",
+            saldo: 55000,
+            limite: 5000
+        },
+        {
+            nombre: "Romina",
+            user: "gimenez",
+            pass: "619",
+            saldo: 55000,
+            limite: 5000
+        },
+        {
+            nombre: "Gonzalo",
+            user: "coronel",
+            pass: "1825",
+            saldo: 55000,
+            limite: 5000
+        }
+    ];
 
         //Usamos el LocalStorage como base de datos
         localStorage.setItem("miBaseDeDatos", JSON.stringify(cuentas));
