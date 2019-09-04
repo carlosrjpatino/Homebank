@@ -4,16 +4,16 @@ class Login {
         let userInput = document.querySelector("#user").value;
         let passInput = document.querySelector("#pass").value;
         let datoCuenta = BaseDeDatos.datos();
-        
+
         //muestra por consola el listado completo de usuarios
-        datoCuenta.map( usuarioPorUsuario =>
-                 console.log(usuarioPorUsuario.nombre)                         
-                );
-        
+        datoCuenta.map(usuarioPorUsuario =>
+            console.log(usuarioPorUsuario.nombre)
+        );
+
         //encuentra un usuario que se busque
-        let userBuscados = datoCuenta.find(usuarioPorUsuario => 
-                usuarioPorUsuario.user === userInput);
-        
+        let userBuscados = datoCuenta.find(usuarioPorUsuario =>
+            usuarioPorUsuario.user === userInput);
+
         if (userBuscados === undefined) {
             //No encontro el usuario
             //Muestra mensaje de error
@@ -28,13 +28,13 @@ class Login {
                 Login.hidePnlLogin();
                 localStorage.setItem("miCuenta", JSON.stringify(userBuscados));
                 Cuenta.consultarTpl();
-                
+
             } else {
                 //Muestra mensaje de error
-            document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
-            }            
-        }                
-        console.log("userBUscado:" + JSON.stringify(userBuscados));                              
+                document.querySelector("#mensajePnl").innerHTML = "Usuario o contraseña incorrecto.";
+            }
+        }
+        console.log("userBUscado:" + JSON.stringify(userBuscados));
     }
 
     static salir() {
@@ -89,6 +89,8 @@ class Cuenta {
         document.querySelector("#nombreUser").innerHTML = misDatos.nombre;
         document.querySelector("#saldo-cuenta").innerHTML = "$" + misDatos.saldo;
         document.querySelector("#limiteMonto").innerHTML = "$" + misDatos.limite;
+        let operacion = "consulta";
+        Movimiento.agregar(operacion, 0);
     }
 
     static extraerTpl() {
@@ -100,6 +102,7 @@ class Cuenta {
     }
 
     static depositarCalculo() {
+        let operacion = "deposito";
         if (document.querySelector("#depositarInput").value <= 0) {
             document.querySelector("#pnlMensajeDepositar").innerHTML = "No se puede depositar menos de $1.";
         } else {
@@ -107,11 +110,13 @@ class Cuenta {
             misDatos.saldo = parseInt(document.querySelector("#depositarInput").value) + misDatos.saldo;
             localStorage.setItem("miCuenta", JSON.stringify(misDatos));
             document.querySelector("#pnlMensajeDepositar").innerHTML = "Okay, deposito de $" + document.querySelector("#depositarInput").value;
+            Movimiento.agregar(operacion, document.querySelector("#depositarInput").value);
         }
     }
 
     static extraerCalculo() {
         //let datoCuenta = Login.baseDeDatos();
+        let operacion = "extraccion";
 
         if (document.querySelector("#extraerInput").value <= 0) {
             console.log("numero negativo o cero");
@@ -133,6 +138,7 @@ class Cuenta {
                 console.log("saldo despues de extracion: " + misDatos.saldo);
 
                 document.querySelector("#pnlMensajeExtraer").innerHTML = "Extracción realizado por $" + document.querySelector("#extraerInput").value;
+                Movimiento.agregar(operacion, document.querySelector("#extraerInput").value);
             }
 
         }
@@ -168,40 +174,110 @@ class Cuenta {
     }
 }
 
+class Movimiento {
+    static agregar(operacion, importe) {
+        //1. Obtener el array
+        //2. El array lo vamos a tomar del localStorage
+        //3. agregar movimiento al array
+        console.log(operacion + " " + importe);
+
+        switch (operacion) {
+            case "extraccion":
+                console.log("Es es la extraccion");
+                break;
+
+            case "deposito":
+                console.log("Es es el deposito");
+                break;
+
+            case "consulta":
+                console.log("Es es la consulta");
+                break;
+        }
+
+        let movimiento = {
+            fecha: new Date(),
+            descripcion: operacion,
+            importe: importe,
+            saldo: 0
+        }
+    }
+}
+
 class BaseDeDatos {
     static datos() {
         // Esta seria nuestra base de datos.
         // En esta primer etapa lo manejamos desde el cliente, luego ira en el servidor con SQL.
         let cuentas = [
             {
-            nombre: "Pedro Lopez",
-            user: "lopez",
-            pass: "321",
-            saldo: 125000,
-            limite: 5000
-        },
-        {
-            nombre: "Martin",
-            user: "luna",
-            pass: "9090",
-            saldo: 55000,
-            limite: 6000
-        },
-        {
-            nombre: "Romina",
-            user: "gimenez",
-            pass: "619",
-            saldo: 0,
-            limite: 3000
-        },
-        {
-            nombre: "Gonzalo",
-            user: "coronel",
-            pass: "1825",
-            saldo: 1000,
-            limite: 1000
-        }
-    ];
+                nombre: "Pedro Lopez",
+                user: "lopez",
+                pass: "321",
+                saldo: 125000,
+                limite: 5000,
+                movientos: [
+                    {
+                        fecha: "",
+                        descripcion: "",
+                        importe: 0,
+                        saldo: 0
+                    },
+                    {
+                        fecha: "",
+                        descripcion: "",
+                        importe: 0,
+                        saldo: 0
+                    },
+                    {
+                        fecha: "",
+                        descripcion: "",
+                        importe: 0,
+                        saldo: 0
+                    },
+                    {
+                        fecha: "",
+                        descripcion: "",
+                        importe: 0,
+                        saldo: 0
+                    },
+                    {
+                        fecha: "",
+                        descripcion: "",
+                        importe: 0,
+                        saldo: 0
+                    },
+                    {
+                        fecha: "",
+                        descripcion: "",
+                        importe: 0,
+                        saldo: 0
+                    }
+                ]
+
+
+            },
+            {
+                nombre: "Martin",
+                user: "luna",
+                pass: "9090",
+                saldo: 55000,
+                limite: 6000
+            },
+            {
+                nombre: "Romina",
+                user: "gimenez",
+                pass: "619",
+                saldo: 0,
+                limite: 3000
+            },
+            {
+                nombre: "Gonzalo",
+                user: "coronel",
+                pass: "1825",
+                saldo: 1000,
+                limite: 1000
+            }
+        ];
 
         //Usamos el LocalStorage como base de datos
         localStorage.setItem("miBaseDeDatos", JSON.stringify(cuentas));
