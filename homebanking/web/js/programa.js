@@ -60,6 +60,7 @@ class Login {
         document.querySelector("#depositarBtn").setAttribute("onclick", "Cuenta.depositarCalculo();");
         document.querySelector("#limiteOpt").setAttribute("onclick", "Cuenta.limiteTpl()");
         document.querySelector("#limiteBtn").setAttribute("onclick", "Cuenta.limiteCalculo();");
+        document.querySelector("#movimientosOpt").setAttribute("onclick", "Cuenta.movimientoTpl();");
     }
 
     static showPnlCuenta() {
@@ -167,10 +168,33 @@ class Cuenta {
             }
 
         }
-
-
-
-
+    }
+    
+    static movimientoTpl(){
+        document.querySelector("#masterTpl").innerHTML = document.querySelector("#movimientosTpl").innerHTML;
+        Cuenta.movimientoCalculo();
+    }
+    
+    static movimientoCalculo(){
+        let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
+        let movimientos = misDatos.movimientos;
+        let templateMov = `
+        <table>
+            <tr><th>Fecha</th><th>Operacion</th><th>Importe</th><th>Saldo</th></tr>
+        ${ movimientos.map ( movimiento => 
+                `
+                <tr>
+        <td> ${movimiento.fecha} </td>
+        <td> ${movimiento.descripcion} </td>
+        <td> ${movimiento.importe} </td>
+        <td> ${movimiento.saldo} </td>
+                </tr>
+                
+                `
+                ).join('') }
+        </table>
+`;
+        document.querySelector("#movimientosPnl").innerHTML = templateMov;
     }
 }
 
