@@ -28,7 +28,6 @@ class Login {
                 Login.hidePnlLogin();
                 localStorage.setItem("miCuenta", JSON.stringify(userBuscados));
                 Cuenta.consultarTpl();
-                Movimiento.inicial();
 
             } else {
                 //Muestra mensaje de error
@@ -182,50 +181,18 @@ class Movimiento {
         //3. agregar movimiento al array
         let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
         console.log(operacion + " " + importe);
-        misDatos.saldo;
-        switch (operacion) {
-            case "extraccion":
-                console.log("Es es la extraccion");
-                misDatos.saldo = misDatos.saldo - importe;
-                break;
-
-            case "deposito":
-                console.log("Es es el deposito");
-                break;
-
-            case "consulta":
-                console.log("Es es la consulta");
-                break;
-
-            default:
-                console.log("Operacion desconocida");
-                break;
-        }
-        
-        
-
+        misDatos.saldo;                        
         let movimiento = {
             fecha: new Date(),
             descripcion: operacion,
             importe: importe,
-            saldo: 0
-        };                        
+            saldo: misDatos.saldo
+        };   
+        
+        misDatos.movimientos.push(movimiento);
         localStorage.setItem("miCuenta",JSON.stringify(misDatos));
     }
     
-    static inicial(){
-        let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
-        
-        let movimiento = {
-            fecha: new Date(),
-            descripcion: "",
-            importe: 0,
-            saldo: misDatos.saldo
-        };
-        
-        misDatos.movientos.push(movimiento);
-        localStorage.setItem("miCuenta",JSON.stringify(misDatos));
-    }
 }
 
 class BaseDeDatos {
@@ -239,7 +206,7 @@ class BaseDeDatos {
                 pass: "321",
                 saldo: 125000,
                 limite: 5000,
-                movientos: []
+                movimientos: []
 
 
             },
@@ -249,7 +216,7 @@ class BaseDeDatos {
                 pass: "9090",
                 saldo: 55000,
                 limite: 6000,
-                movientos: []
+                movimientos: []
             },
             {
                 nombre: "Romina",
@@ -257,7 +224,7 @@ class BaseDeDatos {
                 pass: "619",
                 saldo: 0,
                 limite: 3000,
-                movientos: []
+                movimientos: []
             },
             {
                 nombre: "Gonzalo",
@@ -265,7 +232,7 @@ class BaseDeDatos {
                 pass: "1825",
                 saldo: 1000,
                 limite: 1000,
-                movientos: []
+                movimientos: []
             }
         ];
 
