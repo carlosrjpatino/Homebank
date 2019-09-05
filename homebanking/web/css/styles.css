@@ -24,7 +24,7 @@ body {
     vertical-align: text-bottom;
 }
 
-.logo {
+.header__logo {
     display: inline-block;
     width: 200px;
     height: 50px;
@@ -32,6 +32,11 @@ body {
     text-align: left;
     vertical-align: text-bottom;
 }
+
+.header--small{
+    width: 50px;
+}
+
 
 .align-left {
     display: flex;
@@ -197,7 +202,7 @@ footer{
         align-items: center;
     }
 
-    .logo {
+    .header__logo {
         margin-bottom: 10px;
     }
 }
