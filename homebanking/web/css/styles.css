@@ -38,12 +38,10 @@ body {
 }
 
 
-.align-left {
-    display: flex;
-    padding: 8px;
-
-    align-items: center;
+.header--big{
+    width: 250px;
 }
+
 
 .tu-cuenta {
     padding-left: 24px;
