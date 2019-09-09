@@ -13,7 +13,7 @@ body {
  * Login
  */
 
-#loginPnl {
+.login {
     width: 200px;
     height: 201px;
     margin: 0 auto;
