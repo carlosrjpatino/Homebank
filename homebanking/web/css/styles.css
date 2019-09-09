@@ -107,6 +107,10 @@ body {
     background-color: transparent;
 }
 
+.maestroPnl__tablaMov {
+    margin: auto;
+}
+
 .cuenta__item:hover {
     margin-left: 10px;
     color: #2cc197;
@@ -175,9 +179,7 @@ body {
         padding-bottom: 20px;
     }
     
-    .maestroPnl__movimientos {
-        padding-left: 8px;
-    }
+
 
     #maestroPnl__saldo {
         font-size: 8.5vw;

@@ -96,7 +96,7 @@ class Cuenta {
         let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
         let movimientos = misDatos.movimientos;
         let templateMov = `
-        <table>
+        <table class="maestroPnl__tablaMov">
             <tr><th>Fecha</th><th>Operacion</th><th>Importe</th><th>Saldo</th></tr>
         ${ movimientos.map ( movimiento => 
                 `
