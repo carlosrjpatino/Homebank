@@ -7,7 +7,7 @@ class Movimiento {
         console.log(operacion + " " + importe);
         misDatos.saldo;                        
         let movimiento = {
-            fecha: new Date(),
+            fecha: new Date().toLocaleDateString("es-ES"),
             descripcion: operacion,
             importe: importe,
             saldo: misDatos.saldo

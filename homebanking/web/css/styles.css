@@ -165,12 +165,18 @@ body {
 
 @media only screen and (max-width: 800px) {
     .cuenta {
+        width: 100%;
         flex-direction: column-reverse;
     }
 
     .maestroPnl {
         width: 100%;
         margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    
+    .maestroPnl__movimientos {
+        padding-left: 8px;
     }
 
     #maestroPnl__saldo {
