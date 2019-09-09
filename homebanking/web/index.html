@@ -14,29 +14,26 @@
                 <img class="header--small" src="img/secure.png" />
             </div>
         </header>
-        <main >
-            <div id="cuentaPnl" class="white-container">
+        <main class="main">
+            <div id="cuentaPnl" class="cuenta">
                 <div>
                     
                 
                 </div>
-                <nav class="menu-container">
-                    <img class="avatar" src="img/avatar.svg"/>
-                    <span id="nombre">Bienvenido/a <span id="nombreUser"></span> </span>
-                    <h1 class="tu-cuenta">Tu cuenta</h1>
-                    <button class="links" id="consultarOpt">Consultar saldo</button>
-                    <button class="links" id="extraerOpt">Extraer dinero</button>
-                    <button class="links" id="depositarOpt">Depositar dinero</button>                   
-                    <button class="links" id="limiteOpt">Límite de extracción</button>
-                    <button class="links" id="movimientosOpt">Movimientos</button>
-                    <button class="links" id="logoutBtn">Logout</button>
+                <nav class="cuenta__menu">
+                    <img src="img/avatar.svg"/>
+                    <span class="cuenta__nombre">Bienvenido/a <span id="nombreUser"></span> </span>
+                    <h1 class="cuenta__titulo">Tu cuenta</h1>
+                    <button class="cuenta__item" id="consultarOpt">Consultar saldo</button>
+                    <button class="cuenta__item" id="extraerOpt">Extraer dinero</button>
+                    <button class="cuenta__item" id="depositarOpt">Depositar dinero</button>                   
+                    <button class="cuenta__item" id="limiteOpt">Límite de extracción</button>
+                    <button class="cuenta__item" id="movimientosOpt">Movimientos</button>
+                    <button class="cuenta__item" id="logoutBtn">Logout</button>
                 </nav>
-                <section class="green-container" id="masterTpl">
-                    <!-- article class="cuenta-info">
-                        <p>Saldo en tu cuenta</p>
-                        <h3 id="saldo-cuenta">$</h3>
-                        <p id="limite-extraccion">Tu límite de extracción es: <span id="limiteMonto"></span></p>
-                    </article -->
+                <section class="maestroPnl" id="masterTpl">
+                   <!-- Aca se despliega cada una de las opciones -->
+                   
                 </section>
                 
             </div>
@@ -53,7 +50,7 @@
         </main>
         
         <!-- ZONA DE TEMPLATES -->
-        <article id="extraerTpl" class="ocultarTpl">
+        <article id="extraerTpl" class="maestroPnl--ocultar">
             <h2>Extraer dinero</h2>
             <input type="number" id="extraerInput" min="1"/>
             <button id="extraerBtn">Aceptar</button>
@@ -61,28 +58,28 @@
         </article>
         
         
-        <article id="consultarTpl" class="ocultarTpl">
+        <article id="consultarTpl" class="maestroPnl--ocultar">
             <p>Saldo en tu cuenta</p>
-            <h3 id="saldo-cuenta">$</h3>
-            <p id="limite-extraccion">Tu límite de extracción es: <span id="limiteMonto"></span></p>
+            <h3 id="saldo-cuenta" class="maestroPnl__saldo">$</h3>
+            <p id="limite-extraccion" class="maestroPnl__limite">Tu límite de extracción es: <span id="limiteMonto"></span></p>
         </article>
         
         
-        <article id="depositarTpl" class="ocultarTpl">
+        <article id="depositarTpl" class="maestroPnl--ocultar">
             <h2>Depositar dinero</h2>
             <input type="number" id="depositarInput" min="1"/>
             <button id="depositarBtn">Aceptar</button>
             <div id="pnlMensajeDepositar"></div>
         </article>
         
-        <article id="limiteTpl" class="ocultarTpl">
+        <article id="limiteTpl" class="maestroPnl--ocultar">
             <h2>Cambiar límite de extracción</h2>
             <input type="number" id="limiteInput" min="1"/>
             <button id="limiteBtn">Aceptar</button>
             <div id="pnlMensajeLimite"></div>
         </article>
         
-       <article id="movimientosTpl" class="movimientosTpl ocultarTpl">
+       <article id="movimientosTpl" class="maestroPnl--ocultar">
             <h2>Movimientos en tu cuenta</h2>
             
             <div id="movimientosPnl">
@@ -90,7 +87,7 @@
             </div>
         </article>
         
-        <footer>
+        <footer class="footer">
             Banco Gales
         </footer>
         <script src="js/login.js" defer=""></script>
