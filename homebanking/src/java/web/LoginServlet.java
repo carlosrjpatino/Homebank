@@ -15,6 +15,9 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        System.out.println("Usuario: " + req.getParameter("user"));  
+        System.out.println("Clave: " + req.getParameter("pass"));  
+        
         resp.getWriter().println("Si, la comunicacion con el server funciona, chabon.");
     }
    
