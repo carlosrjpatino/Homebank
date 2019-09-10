@@ -2,7 +2,6 @@ class Cuenta {
     static consultarTpl() {
         document.querySelector("#masterTpl").innerHTML = document.querySelector("#consultarTpl").innerHTML;
         document.querySelector("#mensajePnl").innerHTML = "";
-        //let datoCuenta = Login.baseDeDatos();            
         let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
         document.querySelector("#nombreUser").innerHTML = misDatos.nombre;
         document.querySelector("#saldo-cuenta").innerHTML = "$" + misDatos.saldo;
@@ -33,7 +32,6 @@ class Cuenta {
     }
 
     static extraerCalculo() {
-        //let datoCuenta = Login.baseDeDatos();
         let operacion = "extraccion";
 
         if (document.querySelector("#extraerInput").value <= 0) {

@@ -1,6 +1,6 @@
 class Login {
 
-    static entrar() {
+    static entrarLocal() {
         let userInput = document.querySelector("#user").value;
         let passInput = document.querySelector("#pass").value;
         let datoCuenta = BaseDeDatos.datos();
@@ -37,11 +37,15 @@ class Login {
         console.log("userBUscado:" + JSON.stringify(userBuscados));
     }
 
-    static salir() {
+    static salirLocal() {
         //Oculto el panel de la cuenta privada
         Login.hidePnlCuenta();
         //Muestro el login publico.
         Login.showPnlLogin();
+    }
+    
+    static entrarServer(){
+        Http.doGet();
     }
 
     static init() {
@@ -50,8 +54,10 @@ class Login {
         //Oculta panel de cuenta privada
         Login.hidePnlCuenta();
         //A los botones de Login y Logout le asigna metodos de la Clase.
-        document.querySelector("#loginBtn").setAttribute("onclick", "Login.entrar();");
-        document.querySelector("#logoutBtn").setAttribute("onclick", "Login.salir();");
+        document.querySelector("#loginBtnLocal").setAttribute("onclick", "Login.entrarLocal();");
+        document.querySelector("#loginBtnServer").setAttribute("onclick", "Login.entrarServer();");
+        
+        document.querySelector("#logoutBtn").setAttribute("onclick", "Login.salirLocal();");
 
         document.querySelector("#extraerOpt").setAttribute("onclick", "Cuenta.extraerTpl();");
         document.querySelector("#extraerBtn").setAttribute("onclick", "Cuenta.extraerCalculo();");
