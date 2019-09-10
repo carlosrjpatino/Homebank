@@ -45,7 +45,9 @@ class Login {
     }
     
     static entrarServer(){
-        Http.doGet();
+        let userInput = document.querySelector("#user").value;
+        let passInput = document.querySelector("#pass").value;
+        Http.doGet("LoginServlet" + "?&user=" + userInput + "?&pass=" + passInput);
     }
 
     static init() {

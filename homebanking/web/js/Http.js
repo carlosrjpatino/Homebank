@@ -1,6 +1,6 @@
 class Http {
-    static doGet(){
-        fetch("LoginServlet", {method : "GET"});
+    static doGet(servlet){
+        fetch(servlet, {method : "GET"});
     }
     
     static doPost(){
