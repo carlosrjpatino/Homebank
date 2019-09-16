@@ -1,0 +1,206 @@
+/**
+ * General
+ */
+
+body {
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    background-color: #2a333d;
+}
+
+
+/**
+ * Login
+ */
+
+.login {
+    width: 200px;
+    height: 220px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+}
+
+
+.login__btnIn {
+    margin-top: 15px;
+}
+
+/**
+ * Header
+ */
+
+.header {
+    display: flex;
+    width: 65%;
+    margin: 7% auto 0;
+    margin-bottom: 15px;
+    justify-content: space-between;
+}
+
+.header__logo {
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+
+    text-align: left;
+    vertical-align: text-bottom;
+}
+
+.header--small{
+    width: 50px;
+}
+
+.header--big{
+    width: 250px;
+}
+
+
+/**
+ * Cuenta
+ */
+.cuenta {
+    display: flex;
+    width: 65%;
+    padding: 30px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 1px solid #979797;
+    border-radius: 8px;
+    background-color: #fff;
+    justify-content: center;
+}
+
+.cuenta__titulo {
+    padding-left: 24px;
+    margin: 0;
+    margin-left: -30px;
+    font-family: "Source Sans Pro";
+    font-size: 32px;
+    font-weight: normal;
+    color: #2a333d;
+    border-left: 6px solid #2cc197;
+}
+
+.cuenta__nombre {
+    display: inline-block;
+    margin-right: 10px;
+    overflow: hidden;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    color: #000;
+}
+
+.cuenta__item {
+    position: relative;
+    display: block;
+    padding: 0;
+    margin: 20px 0;
+    margin-bottom: 30px;
+    font-family: "Source Sans Pro";
+    font-size: 16px;
+    cursor: pointer;
+    -webkit-transition: all .6s ease-in-out;
+    -moz-transition: all .6s ease-in-out;
+    -o-transition: all .6s ease-in-out;
+    transition: all .6s ease-in-out;
+    text-align: left;
+    vertical-align: text-bottom;
+    color: #666;
+    border: 0;
+    background-color: transparent;
+}
+
+.maestroPnl__tablaMov {
+    margin: auto;
+}
+
+.cuenta__item:hover {
+    margin-left: 10px;
+    color: #2cc197;
+}
+
+.cuenta__menu {
+    display: block;
+    width: 35%;
+    padding-right: 20px;
+}
+
+
+/**
+ * Paneles
+ */
+
+.maestroPnl {
+    width: 65%;
+    box-sizing: border-box;
+    text-align: center;
+    color: white;
+    border-radius: 8px;
+    background-color: #2cc197;
+    align-items: center;
+}
+
+.maestroPnl__saldo {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow: hidden;
+    font-size: 6.5vw;
+    text-align: center;
+    text-overflow: ellipsis;
+}
+
+.maestroPnl__limite {
+    overflow: hidden;
+    font-size: 15px;
+    text-overflow: ellipsis;
+}
+
+.maestroPnl--ocultar {
+    display: none;
+}
+
+/**
+ * Pie
+ */
+
+
+.footer{
+    color: white;
+    text-align: center;
+    margin-top: 50px;
+}
+
+@media only screen and (max-width: 800px) {
+    .cuenta {
+        width: 100%;
+        flex-direction: column-reverse;
+    }
+
+    .maestroPnl {
+        width: 100%;
+        margin-bottom: 20px;
+        padding-bottom: 20px;
+    }
+    
+
+
+    #maestroPnl__saldo {
+        font-size: 8.5vw;
+    }
+
+    .cuenta__menu {
+        width: 100%;
+    }
+
+    .header {
+        margin-bottom: 10px;
+        flex-direction: column;
+
+        align-items: center;
+    }
+
+    .header__logo {
+        margin-bottom: 10px;
+    }
+}
