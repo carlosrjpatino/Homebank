@@ -1,25 +1,27 @@
 
 package persistencia;
 
+import entidades.DB;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class LoginDao {
 
     public static void acceso(String usuario, String clave) throws SQLException, ClassNotFoundException {
         System.out.println("    [...] consultar");
-        String usuario2 = "cine";
-        String clave2 = "cine";
-        String host = "jdbc:mysql://localhost:3306/nataliaCine";
+        
         String querySql = "SELECT * FROM candy;";
 
         try {
            // Class.forName("com.mysql.jdbc.Driver");
             //Se conecta a la base de datos
-            Connection con = DriverManager.getConnection(host, usuario2, clave2);
+            Connection con = DB.getInstance().getConnection();
 
             //Prepara la consulta sql
             PreparedStatement pstm = con.prepareStatement(querySql);
@@ -33,6 +35,8 @@ public class LoginDao {
                         + " " + rs.getString("candy_precio"));
             }
         } catch (SQLException ex) {
+            System.out.println("Alerta: " + ex.getMessage());
+        } catch (IOException ex) {
             System.out.println("Alerta: " + ex.getMessage());
         } finally {
 
