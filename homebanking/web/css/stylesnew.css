@@ -9,19 +9,59 @@ body {
 
 
 /**
+ * Header
+ */
+
+.header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.header--small {
+    width: 50px;
+}
+
+.header__logo {
+    width: 120px;
+}
+
+/**
  * Login
  */
 
 .login {
     width: 200px;
-    height: 220px;
+    height: 270px;
     margin: 0 auto;
     padding: 20px;
+    padding-top: 60px;
     background-color: white;
-   border-radius: 10px;
+    border-radius: 10px;
 }
 
 
 .login__btnIn {
     margin-top: 15px;
 }
+
+
+.login__btn {
+    background: #4CAF50;
+    padding: 15px;
+    color: #FFFFFF;
+    font-size: 14px;
+    width: 100%;
+    text-transform: uppercase;
+    border: 0;
+    margin-bottom: 7px;
+}
+
+.login__input {
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    height: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
