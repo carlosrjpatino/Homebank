@@ -72,7 +72,7 @@ class Login {
     }
 
     static showPnlCuenta() {
-        document.querySelector("#cuentaPnl").style.display = "flex";
+        document.querySelector("#cuentaPnl").style.display = "grid";
     }
 
     static showPnlLogin() {

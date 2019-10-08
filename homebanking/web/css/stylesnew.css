@@ -77,6 +77,16 @@ body {
     color: red;
 }
 
+/**
+ * Cuenta
+ */
+
+
+.cuenta {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
 
 /**
  * Templates
