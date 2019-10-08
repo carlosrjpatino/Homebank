@@ -73,6 +73,9 @@ body {
     text-align: center;
 }
 
+.login__mensaje {
+    color: red;
+}
 
 
 /**
