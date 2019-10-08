@@ -13,8 +13,15 @@ body {
  */
 
 .header {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    /*    display: grid;
+        grid-template-columns: repeat(2, 1fr);*/
+    width: 120px;
+    margin: 0 auto;
+}
+
+.header__title {
+
+
 }
 
 .header--small {
@@ -23,6 +30,7 @@ body {
 
 .header__logo {
     width: 120px;
+
 }
 
 /**
@@ -65,3 +73,30 @@ body {
     text-align: center;
 }
 
+
+
+/**
+ * Templates
+ */
+
+.maestroPnl--ocultar {
+    display: none;
+}
+
+
+
+/**
+ * Footer
+ */
+
+
+.footer {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+}
+
+.footer__secure {
+    margin-top: 50px;
+    width: 30px;
+}
