@@ -98,10 +98,49 @@ body {
     background-color: #0b674d;
     border-radius: 10px;
     width: 70%;
+    color: white;
+    padding: 5%;
 }
 
 .maestroPnl__item {
     margin: 0 auto;
+}
+
+
+.cuenta_opciones {
+    list-style-type: none;
+}
+
+.cuenta__item {
+    color: #666666;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    cursor: pointer;
+}
+
+.cuenta__item:hover
+{
+    color: #050707;
+}
+
+#cssmenu {
+    width: 220px;
+    font-family: Raleway, sans-serif;
+    color: #666666;
+}
+
+
+#cssmenu, #cssmenu ul, #cssmenu ul li, #cssmenu ul li a {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+    line-height: 1;
+    display: block;
+    position: relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /**

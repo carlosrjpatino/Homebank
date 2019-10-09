@@ -4,17 +4,17 @@
         <title>Home Banking</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        
+
         <link href="css/stylesnew.css" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
     </head>
     <body>
         <header class="header">
             <img class="header__logo" src="img/Banklogo.png" alt="Logo del banco"/>
-            
-            
-            
-            
+
+
+
+
         </header>
         <main class="main">
             <div id="cuentaPnl" class="cuenta">                
@@ -22,12 +22,14 @@
                     <img src="img/avatar.svg"/>
                     <span class="cuenta__nombre">Bienvenido/a <span id="nombreUser"></span> </span>
                     <h1 class="cuenta__titulo">Tu cuenta</h1>
-                    <button class="cuenta__item" id="consultarOpt">Consultar saldo</button>
-                    <button class="cuenta__item" id="extraerOpt">Extraer dinero</button>
-                    <button class="cuenta__item" id="depositarOpt">Depositar dinero</button>                   
-                    <button class="cuenta__item" id="limiteOpt">Límite de extracción</button>
-                    <button class="cuenta__item" id="movimientosOpt">Movimientos</button>
-                    <button class="cuenta__item" id="logoutBtn">Logout</button>
+                    <ul class="cuenta_opciones">
+                        <li class="cuenta__item" id="consultarOpt">Consultar saldo</li>
+                        <li class="cuenta__item" id="extraerOpt">Extraer dinero</li>
+                        <li class="cuenta__item" id="depositarOpt">Depositar dinero</li>                   
+                        <li class="cuenta__item" id="limiteOpt">Límite de extracción</li>
+                        <li class="cuenta__item" id="movimientosOpt">Movimientos</li>
+                        <li class="cuenta__item" id="logoutBtn">Logout</li>
+                    </ul>
                 </nav>
                 <section class="maestroPnl" id="masterTpl">
                     <!-- Aca se despliega cada una de las opciones -->
@@ -36,9 +38,9 @@
 
             </div>
             <div id="loginPnl" class="login">
-                
+
                 <input type="text" id="user" class="login__input" placeholder="USUARIO" value="lopez"/>
-                
+
                 <input type="password" id="pass" class="login__input" placeholder="CLAVE" value="321"/>
                 <button id="loginBtnLocal" class="login__btn">Login local</button>
                 <button id="loginBtnServer" class="login__btn">Login server</button>
