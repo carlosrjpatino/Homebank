@@ -85,8 +85,24 @@ body {
 .cuenta {
     display: grid;
     grid-template-columns: 30% 70%;
+    justify-items: center;
+    background-color: white;
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 10px;
+    padding: 10px;
 }
 
+
+.maestroPnl {
+    background-color: #0b674d;
+    border-radius: 10px;
+    width: 70%;
+}
+
+.maestroPnl__item {
+    margin: 0 auto;
+}
 
 /**
  * Templates
