@@ -109,6 +109,7 @@ body {
 
 .cuenta_opciones {
     list-style-type: none;
+    padding-left: 3px;
 }
 
 .cuenta__item {
@@ -116,6 +117,7 @@ body {
     margin-top: 12px;
     margin-bottom: 12px;
     cursor: pointer;
+    font-size: 14pt;
 }
 
 .cuenta__item:hover
@@ -141,6 +143,11 @@ body {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+}
+
+.fa {
+    margin-right: 13px;
+    
 }
 
 /**
