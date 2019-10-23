@@ -93,22 +93,29 @@ class Cuenta {
     static movimientoCalculo(){
         let misDatos = JSON.parse(localStorage.getItem("miCuenta"));
         let movimientos = misDatos.movimientos;
-        let templateMov = `
-        <table class="maestroPnl__tablaMov">
-            <tr><th>Fecha</th><th>Operacion</th><th>Importe</th><th>Saldo</th></tr>
-        ${ movimientos.map ( movimiento => 
-                `
-                <tr>
-        <td> ${movimiento.fecha} </td>
-        <td> ${movimiento.descripcion} </td>
-        <td> ${movimiento.importe} </td>
-        <td> ${movimiento.saldo} </td>
-                </tr>
-                
-                `
-                ).join('') }
-        </table>
-`;
+        let width = Screen.detectWidth();
+        let templateMov = "";
+        if(width >= 600){
+                    templateMov = `
+                <table class="maestroPnl__tablaMov">
+                    <tr><th>Fecha</th><th>Operacion</th><th>Importe</th><th>Saldo</th></tr>
+                ${ movimientos.map ( movimiento => 
+                        `
+                        <tr>
+                <td> ${movimiento.fecha} </td>
+                <td> ${movimiento.descripcion} </td>
+                <td> ${movimiento.importe} </td>
+                <td class="maestroPnl--hide"> ${movimiento.saldo} </td>
+                        </tr>
+
+                        `
+                        ).join('') }
+                </table>
+        `;
+        }else{
+            templateMov = "Version mobile.";
+        }
+        
         document.querySelector("#movimientosPnl").innerHTML = templateMov;
     }
 }

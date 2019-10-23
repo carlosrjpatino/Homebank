@@ -175,3 +175,19 @@ body {
     margin-top: 50px;
     width: 30px;
 }
+
+
+/* 
+Mobile Version
+*/
+
+@media only screen and (max-width: 600px) {
+    /* For mobile phones: */
+    .cuenta {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    
+    
+
+    
+}
